@@ -6,7 +6,7 @@ server.use(express.json())
 
 const db = require("./db")
 
-const Todo = require("./Todo")
+const Todo = require("./module/Todo")
 
 server.get("/",(req,res)=>{
 
@@ -14,7 +14,16 @@ res.json("get is working")
 
 })
 
-server.get("/",(req,res)=>{
+server.post("/",(req,res)=>{
+
+    Todo.create({title:"Make salad",
+    IsCompleted:"It is completed" })
+
+    res.json("Created new To-Do successfully")
+
+})
+
+server.get("/tasks",(req,res)=>{
 
     Todo.find({},(err,data)=>{
 
@@ -22,7 +31,7 @@ server.get("/",(req,res)=>{
         
     })
     
-    })
+})
     
 
 server.listen(3000,()=>{
