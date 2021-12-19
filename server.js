@@ -8,7 +8,7 @@ const db = require("./db")
 
 const Todo = require("./module/Todo")
 
-server.get("/",(req,res)=>{
+server.get("/1",(req,res)=>{
 
 res.json("get is working")
 
@@ -16,20 +16,27 @@ res.json("get is working")
 
 server.post("/",(req,res)=>{
 
-    Todo.create({title:"Make salad",
-    IsCompleted:"It is completed" })
-
+    Todo.create(req.body, (err,newtask)=>{
+        if (err) {
+            console.log("ERROR: ", err);
+          } else {
+            res.status(201).json(newtask);
+        }
+    });
+  
     res.json("Created new To-Do successfully")
 
 })
 
-server.get("/tasks",(req,res)=>{
+server.get("/3",(req,res)=>{
 
-    Todo.find({},(err,data)=>{
-
-
-        
-    })
+    Todo.find({}, (err, data) => {
+        if (err) {
+          console.log("ERROR: ", err);
+        } else {
+          res.json(data);
+        }
+      });
     
 })
     
