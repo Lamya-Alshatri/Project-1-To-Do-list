@@ -141,10 +141,5 @@ app.put("/tasks/:id/:isCompleted", (req, res) => {
 app.listen(5000, () => {
   console.log("SERVER IS WORKING ..");
 });
-server.listen(3000,()=>{
-
-console.log("server is working")
-})
-
 
 
