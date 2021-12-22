@@ -5,7 +5,10 @@ export default function Todo (props) {
         title, isCompleted}=props.task
       return (
         <div className='Todo'>
-          <p>TITLE: {title} </p> <p>{isCompleted} <input type="checkbox"></input></p>
-          
+      
+          <input type="checkbox" checked ={isCompleted}></input>
+
+          <span style={{ textDecoration:isCompleted? 'line-through':'none'}}>{title}</span>
+          <button>✖</button>
         </div>)
 }

@@ -5,7 +5,7 @@ import React, { useState,useEffect } from 'react'
 
 import Todo from "./components/Todo"
 import axios from 'axios';
-
+import Add from"./components/Add"
 
 
 export default function App() {
@@ -19,14 +19,30 @@ export default function App() {
   .catch(err => {
     console.error(err); 
   })
-  }
+
+
+}
+
+
+ 
 
   // useEffect(()=>{
 
   //   GetData()
   // },[])
+  const postaNewTodo = (body) => {
+    axios.post("http://localhost:5000/tasks",body)
+    .then(res => {
+      console.log(res.data)
+      // setTasks(res.data)
+      GetData()
+      // change state using spread operator
+    })
+    .catch(err => {
+      console.error(err); 
+    })
+    }
 
- 
   const mapOverTasks = tasks.map((taskObj, i) => (
     <Todo  key={i} task={taskObj} />
   ));
@@ -48,7 +64,8 @@ export default function App() {
   
   return(
     <div className='g'>
-     
+      <p>To-Do list</p>
+     <Add addfunction={postaNewTodo}/>
       <button onClick={GetData}>Get ALL</button>
 
       {/* {map} */}

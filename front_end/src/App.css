@@ -7,7 +7,19 @@
   border: solid 3px black;
 }
 
+.Todo,span{
+
+  margin: 0px 10px 0px 10px
+
+}
+
 .Todo{
 
   border: solid 3px blue;
+}
+
+.Add{
+  text-align: center;
+
+  border: solid 3px black;
 }
