@@ -43,8 +43,19 @@ export default function App() {
     })
     }
 
+    const deleteTodo = (id) => {
+  axios.delete(`http://localhost:5000/tasks/${id}`,)
+  .then(res => {
+    console.log(res.data)
+
+    GetData()
+  })
+  .catch(err => {
+    console.error(err); 
+  })
+}
   const mapOverTasks = tasks.map((taskObj, i) => (
-    <Todo  key={i} task={taskObj} />
+    <Todo  key={i} task={taskObj} deleteOneTodo={deleteTodo}  />
   ));
 
 // i need to use this command to put line on checked tasks style={{textDecoration:"line-through black"}}
