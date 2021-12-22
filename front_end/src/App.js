@@ -24,7 +24,7 @@ export default function App() {
 }
 
 
- 
+
 
   // useEffect(()=>{
 
@@ -33,6 +33,7 @@ export default function App() {
   const postaNewTodo = (body) => {
     axios.post("http://localhost:5000/tasks",body)
     .then(res => {
+      
       console.log(res.data)
       // setTasks(res.data)
       GetData()
@@ -46,17 +47,34 @@ export default function App() {
     const deleteTodo = (id) => {
   axios.delete(`http://localhost:5000/tasks/${id}`,)
   .then(res => {
+    
     console.log(res.data)
-
     GetData()
   })
   .catch(err => {
     console.error(err); 
   })
 }
+
+const  checkAndUpdate = (id,newStatus)=>{
+
+  axios.put(`http://localhost:5000/tasks/${id}/${newStatus}`,)
+  .then(function (response) {
+    console.log(response.data)
+
+    GetData()
+  })
+  .catch(function (error) {
+    console.error(error)
+  
+  })
+}
+
+
   const mapOverTasks = tasks.map((taskObj, i) => (
-    <Todo  key={i} task={taskObj} deleteOneTodo={deleteTodo}  />
+    <Todo  key={i} task={taskObj} deleteOneTodo={deleteTodo} checkAndUpdate1={checkAndUpdate}  />
   ));
+
 
 // i need to use this command to put line on checked tasks style={{textDecoration:"line-through black"}}
 
@@ -76,7 +94,7 @@ export default function App() {
   return(
     <div className='g'>
       <p>To-Do list</p>
-     <Add addfunction={postaNewTodo}/>
+    <Add addfunction={postaNewTodo}/>
       <button onClick={GetData}>Get ALL</button>
 
       {/* {map} */}
