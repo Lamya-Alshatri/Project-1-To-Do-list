@@ -56,6 +56,46 @@ export default function App() {
   })
 }
 
+const deleteAll = () => {
+  axios.delete(`http://localhost:5000/Alltasks`,)
+  .then(res => {
+    
+    console.log(res.data)
+    GetData()
+  })
+  .catch(err => {
+    console.error(err); 
+  })
+}
+
+const GetCertainTodos = ()=> {
+
+axios.get(`http://localhost:5000/filter?isCompleted=true`)
+.then(function (response) {
+  console.log(response.data)
+  setTasks(response.data)
+
+})
+.catch(function (error) {
+  console.error(error)
+})
+
+}
+
+const GetCertainTodos2 = ()=> {
+
+  axios.get(`http://localhost:5000/filter?isCompleted=false`)
+  .then(function (response) {
+    console.log(response.data)
+    setTasks(response.data)
+  
+  })
+  .catch(function (error) {
+    console.error(error)
+  })
+  
+  }
+
 const  checkAndUpdate = (id,newStatus)=>{
 
   axios.put(`http://localhost:5000/tasks/${id}/${newStatus}`,)
@@ -93,13 +133,26 @@ const  checkAndUpdate = (id,newStatus)=>{
   
   return(
     <div className='g'>
-      <p>To-Do list</p>
+      <p className='To'>To-Do list</p>
     <Add addfunction={postaNewTodo}/>
-      <button onClick={GetData}>Get ALL</button>
+    <button id="GetData" onClick={GetData}>Get ALL</button> 
 
+    <br/>
+    <p className="To">==============================</p>
+    <br/>
+    <button id="btn" onClick={deleteAll}>Delete All</button>
+    <br/>
+    <p className="To">==============================</p>
+    <br/>
+    <button id="btn" onClick={GetCertainTodos}>Get Finished</button>
+    <br/>
+    <p className="To">==============================</p>
+    <br/>
+    <button id="btn" onClick={GetCertainTodos2}>Get Pending</button>
       {/* {map} */}
-
+      <br/>
       {mapOverTasks}
+      <br/>
     </div>)
   
 }

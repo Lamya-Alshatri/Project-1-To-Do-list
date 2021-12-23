@@ -86,10 +86,10 @@ app.delete("/tasks/:id", (req, res) => {
   });
 });
 
-app.delete("/tasks", (req, res) => {
+app.delete("/Alltasks", (req, res) => {
   // console.log("37:", req.params.id);
 
-  Todo.deleteMany({ isCompleted: true }, (err, deleteObj) => {
+  Todo.deleteMany({ }, (err, deleteObj) => {
     if (err) {
       console.log("ERROR: ", err);
     } else {

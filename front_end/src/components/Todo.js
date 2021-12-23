@@ -11,8 +11,8 @@ export default function Todo (props) {
         
           <input type="checkbox"  defaultChecked = {isCompleted} onClick={()=>{props.checkAndUpdate1(_id,!isCompleted)}}/>
 
-          <span style={{ textDecoration:isCompleted? 'line-through':'none'}}>{title}</span>
-          <button onClick={()=>{
-            props.deleteOneTodo(_id)}}>❌</button>
+          <span className='size' style={{ textDecoration:isCompleted? 'line-through':'none'}}>{title}</span>
+          <button id = "btn" onClick={()=>{
+            props.deleteOneTodo(_id)}}>Delete</button>
     </div>)
 }
