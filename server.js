@@ -157,14 +157,15 @@ app.post("/users/register", (req, res) => {
 app.post("/users/login", (req, res) => {
   usertat.find({ email: req.body.email }, (err, data) => {
     if (err) {
-       res.status(400).json({ message: "This user is not vlidated" });
+      
       console.log("ERROR: ", err);
-      console.log("This user is not vlidated")
+    
     } else {
-      res.status(201).json({ message: "This user is vlidated" });
+     
       console.log(data);
       if (data.length === 1) {
         console.log("we found the user")
+        res.status(200).json({ message: "we found the user" });
         if (req.body.password === data[0].password) {
           res.json({message:"the password is correct"});
           console.log("the password is correct");
@@ -172,9 +173,9 @@ app.post("/users/login", (req, res) => {
           console.log("the password is incorrect");
           res.json({message:"the password is incorrect"});
         }
-         
+        res.status(201).json({ message: "This user is vlidated" });
         // res.json(data[0].username);
-        res.status(200).json({ message: "we found the user" });
+       
       } else {
         console.log("we didn't find the user")
         res.status(404).json({ message: "we didn't find the user" });
