@@ -112,6 +112,8 @@ const  checkAndUpdate = (id,newStatus)=>{
 
 
   const mapOverTasks = tasks.map((taskObj, i) => (
+
+    
     <Todo  key={i} task={taskObj} deleteOneTodo={deleteTodo} checkAndUpdate1={checkAndUpdate}  />
   ));
 
@@ -130,29 +132,39 @@ const  checkAndUpdate = (id,newStatus)=>{
 // return <p>{taskobj.title}</p>
 //   }); 
 
+const relodpage = () => {
+
+  window.location.reload();
+}
+
   
   return(
     <div className='g'>
+       <p className='list1'>To-Do list</p>
       <p className='To'>To-Do list</p>
-    <Add addfunction={postaNewTodo}/>
-    <button id="GetData" onClick={GetData}>Get ALL</button> 
 
-    <br/>
-    <p className="To">==============================</p>
-    <br/>
+    <Add addfunction={postaNewTodo}/>
+    
+    <button id="GetData" onClick={GetData}>Get ALL</button> 
+    <span id = "white" >|</span>
+
     <button id="btn" onClick={deleteAll}>Delete All</button>
-    <br/>
-    <p className="To">==============================</p>
-    <br/>
+    <span id = "white"  >|</span>
+
     <button id="btn" onClick={GetCertainTodos}>Get Finished</button>
-    <br/>
-    <p className="To">==============================</p>
-    <br/>
+    <span id = "white" >|</span>
+
     <button id="btn" onClick={GetCertainTodos2}>Get Pending</button>
+    <span id = "white" >|</span>
+
+    <button id="btn" onClick={relodpage} > Relod Page </button>
       {/* {map} */}
+      
+      
       <br/>
       {mapOverTasks}
       <br/>
+      
     </div>)
   
 }
