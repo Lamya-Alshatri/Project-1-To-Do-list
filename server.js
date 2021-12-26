@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
-const cors = require("cors")
+const cors = require("cors");
 
 const db = require("./db");
 const Todo = require("./todo");
+const usertat = require("./Users");
+const { rawListeners } = require("./todo");
 // console.log(Todo);
 
 app.use(express.json());
@@ -89,7 +91,7 @@ app.delete("/tasks/:id", (req, res) => {
 app.delete("/Alltasks", (req, res) => {
   // console.log("37:", req.params.id);
 
-  Todo.deleteMany({ }, (err, deleteObj) => {
+  Todo.deleteMany({}, (err, deleteObj) => {
     if (err) {
       console.log("ERROR: ", err);
     } else {
@@ -139,8 +141,48 @@ app.put("/tasks/:id/:isCompleted", (req, res) => {
   );
 });
 
+app.post("/users/register", (req, res) => {
+  usertat.create(req.body, (err, newUser) => {
+    if (err) {
+      console.log("ERROR: ", err);
+      // res.status(400).json({ message: "This email already taken" });
+    } else {
+      console.log(newUser);
+      // res.status(201).json(newUser);
+      // res.status(200).json({ message: "Create New User Successfully" });
+    }
+  });
+});
+
+app.post("/users/login", (req, res) => {
+  usertat.find({ email: req.body.email }, (err, data) => {
+    if (err) {
+       res.status(400).json({ message: "This user is not vlidated" });
+      console.log("ERROR: ", err);
+      console.log("This user is not vlidated")
+    } else {
+      res.status(201).json({ message: "This user is vlidated" });
+      console.log(data);
+      if (data.length === 1) {
+        console.log("we found the user")
+        if (req.body.password === data[0].password) {
+          res.json({message:"the password is correct"});
+          console.log("the password is correct");
+        } else {
+          console.log("the password is incorrect");
+          res.json({message:"the password is incorrect"});
+        }
+         
+        // res.json(data[0].username);
+        res.status(200).json({ message: "we found the user" });
+      } else {
+        console.log("we didn't find the user")
+        res.status(404).json({ message: "we didn't find the user" });
+      }
+    }
+  });
+});
+
 app.listen(5000, () => {
   console.log("SERVER IS WORKING ..");
 });
-
-
