@@ -144,12 +144,11 @@ app.put("/tasks/:id/:isCompleted", (req, res) => {
 app.post("/users/register", (req, res) => {
   usertat.create(req.body, (err, newUser) => {
     if (err) {
-      console.log("ERROR: ", err);
-      // res.status(400).json({ message: "This email already taken" });
+      // console.log("ERROR: ", err);
+      res.status(400).json({ message: "This email already taken" });
     } else {
-      console.log(newUser);
       // res.status(201).json(newUser);
-      // res.status(200).json({ message: "Create New User Successfully" });
+      res.status(201).json({ message: "Create New User Successfully" });
     }
   });
 });

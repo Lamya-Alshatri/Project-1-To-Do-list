@@ -6,6 +6,8 @@ import React, { useState,useEffect } from 'react'
 import Todo from "./components/Todo"
 import axios from 'axios';
 import Add from"./components/Add"
+import Register from"./components/Register"
+
 
 
 export default function App() {
@@ -111,6 +113,8 @@ const  checkAndUpdate = (id,newStatus)=>{
 }
 
 
+
+
   const mapOverTasks = tasks.map((taskObj, i) => (
 
     
@@ -162,9 +166,9 @@ const relodpage = () => {
       
       
       <br/>
-      {mapOverTasks}
+      {/* {mapOverTasks} */}
       <br/>
-      
+      <Register/>
     </div>)
   
 }
