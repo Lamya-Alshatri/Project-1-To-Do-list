@@ -9,7 +9,7 @@ const CreateNewTodo = () =>{
 }
     return (
         <div className="Add">
-            <input classname="input" type="text" placeholder="Write your To-Do here" onChange={(e)=>{
+            <input className="input" type="text" placeholder="Write your To-Do here" onChange={(e)=>{
         setTitle(e.target.value)
             }}/>
             <button id="btn" onClick={CreateNewTodo}>Create a new To-Do</button>

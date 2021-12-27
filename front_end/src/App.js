@@ -2,11 +2,12 @@
 import './App.css';
 
 import React, { useState,useEffect } from 'react'
-
 import Todo from "./components/Todo"
 import axios from 'axios';
 import Add from"./components/Add"
 import Register from"./components/Register"
+import Login from "./components/Login"
+import { Routes, Route, Link } from "react-router-dom";
 
 
 
@@ -146,9 +147,18 @@ const relodpage = () => {
     <div className='g'>
        <p className='list1'>To-Do list</p>
       <p className='To'>To-Do list</p>
+      <nav>
+        <Link to="/Home">Home</Link>
+        <br/>
+        <Link to="/register">Register</Link>
+        <br/>
+        <Link to="/login">Login</Link>
+      </nav>
+      <br/>
+      <Routes>
+        <Route path="/Home" element={<div className="home">
 
-    <Add addfunction={postaNewTodo}/>
-    
+        <Add addfunction={postaNewTodo}/>
     <button id="GetData" onClick={GetData}>Get ALL</button> 
     <span id = "white" >|</span>
 
@@ -166,10 +176,15 @@ const relodpage = () => {
       
       
       <br/>
-      {/* {mapOverTasks} */}
+      {mapOverTasks}
       <br/>
-      <Register/>
-    </div>)
+      </div>}/>
+        <Route path="login" element={< Login/>} />
+        <Route path="register" element={< Register/>} />
+      </Routes>
+
+    </div>
+  )
   
 }
 

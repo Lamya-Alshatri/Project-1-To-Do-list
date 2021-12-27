@@ -33,23 +33,30 @@ export default function Register() {
         });
     };
     return (
-        <div>
+        <div className="Register" >
             <form action="">
-          <label htmlFor="email">Email:</label>
-            <input type='email' name="input1"onChange={(e)=>{
+              <br/>
+          <label id="label" htmlFor="text">Name:</label>
+            <input type='text' name="input1"onChange={(e)=>{
         setuserName(e.target.value)
-            }} placeholder='write your email here'/>
+            }} placeholder='write your name here'/>
+            <br/>
+            <br/>
             
-            <label htmlFor="password">Password:</label>
+            <label id="label"  htmlFor="password">Password:</label>
             <input type='password' name="input2" onChange={(e)=>{
         setPassword(e.target.value)
             }} placeholder='write your password here' />
-            
-            <label for= "input3">Email:</label>
-            <input type='text' name="input3" onChange={(e)=>{
+            <br/>
+            <br/>
+            <label id="label"  htmlFor= "email">Email:</label>
+            <input type='email' name="input3" onChange={(e)=>{
         setEmail(e.target.value)}} placeholder='write your email here' />
 
+
 <input type="submit" id="btn" value="register"onClick={registerFunc}/>
+<br/>
+<br/>
 </form>
 
   

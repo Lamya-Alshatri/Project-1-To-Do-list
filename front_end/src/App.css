@@ -19,6 +19,17 @@
 
 }
 
+.Register{
+
+border: #DCDCDC 5px solid;
+
+}
+
+.Login{
+
+  border: #DCDCDC 5px solid;
+  
+  }
 
 #white{
 
@@ -26,6 +37,11 @@
   color:#DCDCDC;
 }
 
+#label{
+
+  margin: 10px 10px 10px 10px;
+
+}
 
 
 [type = "checkbox"]{
