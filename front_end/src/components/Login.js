@@ -1,10 +1,9 @@
 import React,{useState} from 'react'
-
 import axios from "axios"
+import { Routes, Route, Link } from "react-router-dom";
 
 
-
-export default function Login() {
+export default function Login(props) {
 
     const [email, setEmail] = useState("lamya")
 
@@ -27,9 +26,12 @@ export default function Login() {
         .post(`http://localhost:5000/users/login`,UserInfo)
         .then((response) => {
           console.log("DATA: ", response.data);
+          props.setIsLoggedIn(true)
+          props.setusername(response.data.username)
         })
         .catch((err) => {
           console.log("ERR: ", err);
+          props.setIsLoggedIn(false)
         });
     };
         
@@ -47,8 +49,11 @@ export default function Login() {
             <label id="label"  htmlFor= "email">Email:</label>
             <input type='text'  onChange={(e)=>{
         setEmail(e.target.value)}}  value = {email} placeholder='write your email here' />
-
+<br/>
+<br/>
 <input type="submit" id="btn" value="Login"onClick={loginFunc}/>
+<br/>
+<Link to="/register">Don't Have An Account</Link>
 <br/>
 <br/>
 </form>

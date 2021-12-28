@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
-
 import axios from "axios"
-
+import { Routes, Route, Link } from "react-router-dom";
 
 export default function Register() {
 
@@ -53,8 +52,11 @@ export default function Register() {
             <input type='email' name="input3" onChange={(e)=>{
         setEmail(e.target.value)}} placeholder='write your email here' />
 
-
+<br/>
+<br/>
 <input type="submit" id="btn" value="register"onClick={registerFunc}/>
+<br/>
+<Link to="/login">Have An Account</Link>
 <br/>
 <br/>
 </form>

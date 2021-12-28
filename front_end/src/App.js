@@ -137,26 +137,30 @@ const  checkAndUpdate = (id,newStatus)=>{
 // return <p>{taskobj.title}</p>
 //   }); 
 
+
+
 const relodpage = () => {
 
   window.location.reload();
 }
+const [IsLoggedIn, setIsLoggedIn] = useState();
 
+const [username, setusername] = useState("");
   
   return(
     <div className='g'>
        <p className='list1'>To-Do list</p>
       <p className='To'>To-Do list</p>
+
+      <p>Name:{username}</p>
       <nav>
-        <Link to="/Home">Home</Link>
-        <br/>
-        <Link to="/register">Register</Link>
-        <br/>
+        <Link to="/home">Home</Link>{" | "}
+        <Link to="/register">Register</Link>{" | "}
         <Link to="/login">Login</Link>
       </nav>
       <br/>
       <Routes>
-        <Route path="/Home" element={<div className="home">
+        <Route path="/home" element={<div className="home">
 
         <Add addfunction={postaNewTodo}/>
     <button id="GetData" onClick={GetData}>Get ALL</button> 
@@ -179,7 +183,7 @@ const relodpage = () => {
       {mapOverTasks}
       <br/>
       </div>}/>
-        <Route path="login" element={< Login/>} />
+        <Route path="login" element={< Login setIsLoggedIn={setIsLoggedIn} setusername={setusername} />} />
         <Route path="register" element={< Register/>} />
       </Routes>
 
