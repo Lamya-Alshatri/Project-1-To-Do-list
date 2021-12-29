@@ -5,6 +5,8 @@ import { Routes, Route, Link } from "react-router-dom";
 
 export default function Login(props) {
 
+    
+
     const [email, setEmail] = useState("lamya")
 
     const [password, setPassword] = useState("90")
@@ -34,7 +36,23 @@ export default function Login(props) {
           props.setIsLoggedIn(false)
         });
     };
-        
+
+    // const DeleteUser = (e) =>{
+
+    //     e.preventDefault();
+
+    //     console.log("logout")
+
+
+       
+    //     axios.delete(`http://localhost:5000/users/login/${email}`)
+    //     .then(res => {
+    //     console.log(res)
+    //     })
+    //     .catch(err => {
+    //     console.error(err); 
+    //     })
+    // }
     
        
     return (

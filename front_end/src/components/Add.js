@@ -8,12 +8,11 @@ const CreateNewTodo = () =>{
     props.addfunction({title:title,isCompleted:false})
 }
     return (
-        <div className="Add">
-            <input className="input" type="text" placeholder="Write your To-Do here" onChange={(e)=>{
+        <div className="h-25  input-group ">
+               <button className=" btn btn-outline-dark " onClick={CreateNewTodo}>Create a new To-Do</button>
+            <input className="form-control" type="text" placeholder="Write your To-Do here" aria-label="To-Do" onChange={(e)=>{
         setTitle(e.target.value)
             }}/>
-            <button id="btn" onClick={CreateNewTodo}>Create a new To-Do</button>
-
         </div>
     );
 }

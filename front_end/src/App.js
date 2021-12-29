@@ -13,6 +13,9 @@ import { Routes, Route, Link } from "react-router-dom";
 
 export default function App() {
   const [tasks, setTasks] = useState([])
+
+  
+
   const GetData = () => {
   axios.get("http://localhost:5000/tasks")
   .then(res => {
@@ -146,40 +149,75 @@ const relodpage = () => {
 const [IsLoggedIn, setIsLoggedIn] = useState();
 
 const [username, setusername] = useState("");
+
+
+const logout = () =>{
+
+  setIsLoggedIn(false)
+
+  setusername("")
+
+}
   
   return(
-    <div className='g'>
+    <div className='m-5 p-3 mb-2 text-center'>
        <p className='list1'>To-Do list</p>
-      <p className='To'>To-Do list</p>
-
+      
+     
       <p>Name:{username}</p>
       <nav>
-        <Link to="/home">Home</Link>{" | "}
-        <Link to="/register">Register</Link>{" | "}
-        <Link to="/login">Login</Link>
+   
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <p>...</p><p class="navbar-brand" >To-Do</p>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+      <Link className='nav-link' to="/home">Home</Link>
+      </li>
+      <li class="nav-item">
+      <Link className='nav-link' to="/register">Register</Link>
+      </li>
+      <li class="nav-item">
+      <Link className='nav-link' to="/login">Login</Link>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+        
+     
+        
       </nav>
+      <br/>
+      <button  className='btn btn-outline-dark' onClick={logout}>logout</button>
+      <br/>
       <br/>
       <Routes>
         <Route path="/home" element={<div className="home">
 
         <Add addfunction={postaNewTodo}/>
-    <button id="GetData" onClick={GetData}>Get ALL</button> 
-    <span id = "white" >|</span>
+        <br/>
+            <br/>
 
-    <button id="btn" onClick={deleteAll}>Delete All</button>
-    <span id = "white"  >|</span>
+    <button className='m-2 btn btn-outline-dark '  onClick={GetData}>Get ALL</button> 
+    
 
-    <button id="btn" onClick={GetCertainTodos}>Get Finished</button>
-    <span id = "white" >|</span>
+    <button className='m-2 btn btn-outline-dark' onClick={deleteAll}>Delete All</button>
+  
 
-    <button id="btn" onClick={GetCertainTodos2}>Get Pending</button>
-    <span id = "white" >|</span>
+    <button className='m-2 btn btn-outline-dark ' onClick={GetCertainTodos}>Get Finished</button>
+   
 
-    <button id="btn" onClick={relodpage} > Relod Page </button>
+    <button className='m-2 btn btn-outline-dark ' onClick={GetCertainTodos2}>Get Pending</button>
+   
+
+    <button className='m-2 btn btn-outline-dark' onClick={relodpage} > Relod Page </button>
       {/* {map} */}
-      
-      
-      <br/>
+                  <br/>
+            <br/>
       {mapOverTasks}
       <br/>
       </div>}/>

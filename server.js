@@ -216,6 +216,23 @@ app.post("/users/login", (req, res) => {
 //   });
 // });
 
+
+
+// app.delete("/users/login/:email", (req, res) => {
+//   // console.log("37:", req.params.id);
+
+//   usertat.deleteOne({ email: req.params.email }, (err, deletedObj) => {
+//     if (err) {
+//       console.log("ERROR: ", err);
+//     } else {
+//       deletedObj.deletedCount === 1
+//         ? res.json("Delete one user successfully")
+//         : res.status(404).json("This user is not found");
+//     }
+//   });
+// });
+
+
 app.listen(5000, () => {
   console.log("SERVER IS WORKING ..");
 });
