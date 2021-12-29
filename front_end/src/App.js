@@ -160,61 +160,67 @@ const logout = () =>{
 }
   
   return(
-    <div className='m-5 p-3 mb-2 text-center'>
-       <p className='list1'>To-Do list</p>
-      
+    <div className='mb-2 text-center mb-4 '>
      
-      <p>Name:{username}</p>
       <nav>
    
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <p>...</p><p class="navbar-brand" >To-Do</p>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+      <nav className=" novbor navbar navbar-expand-lg navbar-dark ">
+  <p className="navbar-brand ms-2 mt-2  list2 " style={{color:"#676FA3"}}>To-Do</p>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-      <Link className='nav-link' to="/home">Home</Link>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item active">
+      <Link style={{color:'#FF5959'}} className=' nav-link' to="/home">Home</Link>
       </li>
-      <li class="nav-item">
-      <Link className='nav-link' to="/register">Register</Link>
+      <li className="nav-item">
+      <Link style={{color:'#FF5959'}}  className='nav-link' to="/register">Register</Link>
       </li>
-      <li class="nav-item">
-      <Link className='nav-link' to="/login">Login</Link>
+      <li className="nav-item">
+      <Link style={{color:'#FF5959'}} className='nav-link' to="/login">Login</Link>
       </li>
     </ul>
   </div>
 </nav>
+<br/>
+<br/>
+<p className='list1'>To-Do list</p>
+<br/>
+      <p className='No'>Name:{username}</p>
 
         
      
+
         
       </nav>
       <br/>
       <button  className='btn btn-outline-dark' onClick={logout}>logout</button>
       <br/>
       <br/>
+
       <Routes>
         <Route path="/home" element={<div className="home">
 
         <Add addfunction={postaNewTodo}/>
         <br/>
+         <hr className="my-4"/>
+
             <br/>
 
     <button className='m-2 btn btn-outline-dark '  onClick={GetData}>Get ALL</button> 
     
 
-    <button className='m-2 btn btn-outline-dark' onClick={deleteAll}>Delete All</button>
+    <button className='m-2 btn btn-outline-dark ' onClick={deleteAll}>Delete All</button>
   
 
     <button className='m-2 btn btn-outline-dark ' onClick={GetCertainTodos}>Get Finished</button>
    
 
-    <button className='m-2 btn btn-outline-dark ' onClick={GetCertainTodos2}>Get Pending</button>
+    <button className='m-2 btn btn-outline-dark' onClick={GetCertainTodos2}>Get Pending</button>
    
 
-    <button className='m-2 btn btn-outline-dark' onClick={relodpage} > Relod Page </button>
+    <button className='m-2 btn btn-outline-dark ' onClick={relodpage} > Relod Page </button>
       {/* {map} */}
                   <br/>
             <br/>

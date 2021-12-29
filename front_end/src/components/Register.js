@@ -32,34 +32,54 @@ export default function Register() {
         });
     };
     return (
-        <div className="Register" >
-            <form action="">
-              <br/>
-          <label id="label" htmlFor="text">Name:</label>
-            <input type='text' name="input1"onChange={(e)=>{
+        <div className="Register m-5  d-flex justify-content-center " >
+
+
+<div className="card w-50">
+  <div className="card-body">
+    <h5 className="card-title">Register</h5>
+  
+  <div className="input-group mb-3">
+  <span class=" m-5 input-group-text" id="basic-addon1">Name</span>
+            <input className='m-5 form-control' type='text' onChange={(e)=>{
         setuserName(e.target.value)
             }} placeholder='write your name here'/>
+            </div>
             <br/>
+            <hr className="my-4"/>
             <br/>
-            
-            <label id="label"  htmlFor="password">Password:</label>
-            <input type='password' name="input2" onChange={(e)=>{
+            <div className="input-group mb-3">
+            <input className=' m-5 form-control'  type='password'  onChange={(e)=>{
         setPassword(e.target.value)
+        
             }} placeholder='write your password here' />
+            <span class=" m-5 input-group-text" id="basic-addon1">password</span>
+            </div>
+            
             <br/>
+            <hr className="my-4"/>
             <br/>
-            <label id="label"  htmlFor= "email">Email:</label>
-            <input type='email' name="input3" onChange={(e)=>{
+            <div className="input-group mb-3">
+            <span class=" m-5 input-group-text" id="basic-addon1">Email</span>
+            <input className='m-5 form-control' type='email'  onChange={(e)=>{
         setEmail(e.target.value)}} placeholder='write your email here' />
+              </div>
+
 
 <br/>
 <br/>
-<input type="submit" id="btn" value="register"onClick={registerFunc}/>
-<br/>
-<Link to="/login">Have An Account</Link>
+<input type="submit" className='m-2 btn btn-outline-dark' value="register"onClick={registerFunc}/>
 <br/>
 <br/>
-</form>
+<Link className='btn btn-primary' to="/login">Have An Account</Link>
+<br/>
+<br/>
+
+<footer class="blockquote-footer">Login link<cite title="Source Title"></cite></footer>
+   
+  </div>
+</div>
+          
 
   
 

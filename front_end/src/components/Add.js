@@ -8,7 +8,7 @@ const CreateNewTodo = () =>{
     props.addfunction({title:title,isCompleted:false})
 }
     return (
-        <div className="h-25  input-group ">
+        <div className="h-25 w-50 input-group text-center container container-table">
                <button className=" btn btn-outline-dark " onClick={CreateNewTodo}>Create a new To-Do</button>
             <input className="form-control" type="text" placeholder="Write your To-Do here" aria-label="To-Do" onChange={(e)=>{
         setTitle(e.target.value)

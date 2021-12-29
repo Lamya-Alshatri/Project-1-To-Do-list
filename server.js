@@ -154,67 +154,67 @@ app.post("/users/register", (req, res) => {
   });
 });
 
-app.post("/users/login", (req, res) => {
-  usertat.find({ email: req.body.email }, (err, data) => {
-    if (err) {
-      
-      console.log("ERROR: ", err);
-    
-    } else {
-     
-      console.log(data);
-      if (data.length === 1) {
-        console.log("we found the user")
-        // res.status(200).json({ message: "we found the user" });
-
-        if (req.body.password === data[0].password) {
-          res.status(200).json({
-                          message: "Login Successfully",
-                          username: data[0].username,});
-          console.log("the password is correct");
-        } else {
-          console.log("the password is incorrect");
-          // res.json({message:"the password is incorrect"});
-        }
-        // res.status(201).json({ message: "This user is vlidated" });
-        // res.json(data[0].username);
-       
-      } else {
-        console.log("we didn't find the user")
-        // res.status(404).json({ message: "we didn't find the user" });
-      }
-    }
-  });
-});
-
 // app.post("/users/login", (req, res) => {
-//   User.find({ email: req.body.email }, (err, arrUserFound) => {
+//   usertat.find({ email: req.body.email }, (err, data) => {
 //     if (err) {
+      
 //       console.log("ERROR: ", err);
+    
 //     } else {
-//       // console.log(arrUserFound);
-//       if (arrUserFound.length === 1) {
-//         // we found the user
-//         if (req.body.password === arrUserFound[0].password) {
-//           // password correct
+     
+//       console.log(data);
+//       if (data.length === 1) {
+//         console.log("we found the user")
+//         res.status(200).json({ message: "we found the user" });
+
+//         if (req.body.password === data[0].password) {
 //           res.status(200).json({
-//             message: "Login Successfully",
-//             username: arrUserFound[0].username,
-//           });
+//                           message: "Login Successfully",
+//                           username: data[0].username,});
+//           console.log("the password is correct");
 //         } else {
-//           // password incorrect
-//           res.status(400).json({
-//             message: "Wrong password",
-//           });
+//           console.log("the password is incorrect");
+//           res.status(400).json({message:"the password is incorrect"});
 //         }
+//         res.status(201).json({ message: "This user is vlidated" });
+//         // res.json(data[0].username);
+       
 //       } else {
-//         res.status(404).json({
-//           message: "The email entered is not registered",
-//         });
+//         console.log("we didn't find the user")
+//         res.status(404).json({ message: "we didn't find the user" });
 //       }
 //     }
 //   });
 // });
+
+app.post("/users/login", (req, res) => {
+  usertat.find({ email: req.body.email }, (err, arrUserFound) => {
+    if (err) {
+      console.log("ERROR: ", err);
+    } else {
+      // console.log(arrUserFound);
+      if (arrUserFound.length === 1) {
+        // we found the user
+        if (req.body.password === arrUserFound[0].password) {
+          // password correct
+          res.status(200).json({
+            message: "Login Successfully",
+            username: arrUserFound[0].username,
+          });
+        } else {
+          // password incorrect
+          res.status(400).json({
+            message: "Wrong password",
+          });
+        }
+      } else {
+        res.status(404).json({
+          message: "The email entered is not registered",
+        });
+      }
+    }
+  });
+});
 
 
 
