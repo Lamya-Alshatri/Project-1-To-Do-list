@@ -172,13 +172,13 @@ const logout = () =>{
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
       <li className="nav-item active">
-      <Link style={{color:'#FF5959'}} className=' nav-link' to="/home">Home</Link>
+      <Link style={{color:'#1C6DD0'}} className=' nav-link' to="/home">Home</Link>
       </li>
       <li className="nav-item">
-      <Link style={{color:'#FF5959'}}  className='nav-link' to="/register">Register</Link>
+      <Link style={{color:'#1C6DD0'}} className='nav-link' to="/register">Register</Link>
       </li>
       <li className="nav-item">
-      <Link style={{color:'#FF5959'}} className='nav-link' to="/login">Login</Link>
+      <Link style={{color:'#1C6DD0'}} className='nav-link' to="/login">Login</Link>
       </li>
     </ul>
   </div>
