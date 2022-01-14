@@ -7,9 +7,9 @@ export default function Login(props) {
 
     
 
-    const [email, setEmail] = useState("lamya")
+    const [email, setEmail] = useState("")
 
-    const [password, setPassword] = useState("90")
+    const [password, setPassword] = useState("")
 
     const [WrongUser, setWrongUser] = useState(false);
 
@@ -77,45 +77,46 @@ export default function Login(props) {
        
     return (
         
-        <div className="Login m-5 d-flex justify-content-center ">
-            <div className="  card w-50">
-  <div class="card-body">
-  <h5 className='card-title '>Login</h5>
-  
-  <div class="input-group mb-3">
-  <span class=" m-5 input-group-text" id="basic-addon1">Password</span>
-  <input type="text" class=" m-5 form-control" placeholder="Lam86486" type='password' onChange={(e)=>{
+        <div className="Login">
+         
+         <div className='Register' style={{backgroundColor:'#FC997C'}}>
+  <h4 className=''>Login</h4>
+  </div>
+  <div className="Register" style={{backgroundColor:'white'}}>
+    <br/>
+  <span className=" ">Password </span>
+  <input type="text" className=" " placeholder="Lam86486" type='password' onChange={(e)=>{
         setPassword(e.target.value)}}  value = {password} placeholder='Lam86486' />
-</div>
+
 <br/>
-<hr className="my-4"/>
+
 <br/>
-<div class="input-group mb-3">
-<input type="email" className=" m-5 form-control" placeholder="lam.alshatri.1@gmail.com" aria-label="Recipient's username" aria-describedby="basic-addon2" onChange={(e)=>{
+<div className=" ">
+<span className =" ">Email </span>
+<input type="email" className=" " placeholder="lam.alshatri.1@gmail.com"  onChange={(e)=>{
         setEmail(e.target.value)}}  value = {email} placeholder='lam.alshatri.1@gmail.com' />
-  <span className =" m-5 input-group-text" id="basic-addon2">Email</span>
-  </div>        
+  
+<br/>    
             <br/>
 
-            {(LoginStatus === 200) && ( <div class="alert alert-success m-5" role="alert">
+            {(LoginStatus === 200) && ( <div className="Success" >
             {message}
 </div>
 )}
 
-{(LoginStatus === 400 ||LoginStatus === 404) && ( <div class="alert alert-danger m-5" role="alert">
+{(LoginStatus === 400 ||LoginStatus === 404) && ( <div className="Error" >
 {message}
 </div> )}
           
 
 
             <br/>        
-<input type="submit" className='m-2 btn btn-outline-dark ' value="Login"onClick={loginFunc}/>
+<input type="submit" className='btn' value="Login"onClick={loginFunc}/>
 <br/>
 <br/>
-<Link className= 'btn btn-primary' to="/register">Don't Have An Account</Link>
+<Link className= '' style={{textDecoration:'none'}} to="/register">Don't Have An Account</Link>
 <br/>
 <br/>
-<footer class="blockquote-footer">Register link<cite title="Source Title"></cite></footer>
   </div>
 </div>
             

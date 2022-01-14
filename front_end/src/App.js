@@ -8,7 +8,13 @@ import Add from"./components/Add"
 import Register from"./components/Register"
 import Login from "./components/Login"
 import { Routes, Route, Link } from "react-router-dom";
-
+import { FaBeer } from 'react-icons/fa';
+import { VscAzure } from "react-icons/vsc";
+class Question extends React.Component {
+  render() {
+    return <h3> Lets go for a<FaBeer />? </h3>
+  }
+}
 
 
 export default function App() {
@@ -160,67 +166,61 @@ const logout = () =>{
 }
   
   return(
-    <div className='mb-2 text-center mb-4 '>
-     
-      <nav>
-   
-      <nav className=" novbor navbar navbar-expand-lg navbar-dark ">
-  <p className="navbar-brand ms-2 mt-2  list2 " style={{color:"#676FA3"}}>To-Do</p>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav">
-      <li className="nav-item active">
-      <Link style={{color:'#1C6DD0'}} className=' nav-link' to="/home">Home</Link>
+    <div className='App '>
+
+    
+      
+    <ul className="">
+      <li className="it1">
+      <Link className=' link' to="/home">Home</Link>
       </li>
-      <li className="nav-item">
-      <Link style={{color:'#1C6DD0'}} className='nav-link' to="/register">Register</Link>
+      <li className="it2">
+      <Link className='link' to="/register">Register</Link>
       </li>
-      <li className="nav-item">
-      <Link style={{color:'#1C6DD0'}} className='nav-link' to="/login">Login</Link>
+      <li className="it3">
+      <Link className='link' to="/login">Login</Link>
       </li>
+
+      <li className='No'> Welcome {username}</li>
     </ul>
-  </div>
-</nav>
-<br/>
-<br/>
-<p className='list1'>To-Do list</p>
-<br/>
-      <p className='No'>Name:{username}</p>
+  
 
-        
-     
+<br/>
+<div className='Do'>
 
-        
-      </nav>
-      <br/>
-      <button  className='btn btn-outline-dark' onClick={logout}>logout</button>
-      <br/>
-      <br/>
+      <button  className='btn' onClick={logout}>logout</button>
+   
+    </div> 
+<br/>
+<h1 className='list1'>To-Do list</h1>
+<br/>
+
+    
+    
 
       <Routes>
         <Route path="/home" element={<div className="home">
 
         <Add addfunction={postaNewTodo}/>
         <br/>
-         <hr className="my-4"/>
+        <hr className=""/>
 
             <br/>
-
-    <button className='m-2 btn btn-outline-dark '  onClick={GetData}>Get ALL</button> 
+    <div className='wrapper'>
+    <button className='box a'  onClick={GetData}>Get ALL</button> 
     
 
-    <button className='m-2 btn btn-outline-dark ' onClick={deleteAll}>Delete All</button>
+    <button className='box b' onClick={deleteAll}>Delete All</button>
   
 
-    <button className='m-2 btn btn-outline-dark ' onClick={GetCertainTodos}>Get Finished</button>
-   
+    <button className='box c' onClick={GetCertainTodos}>Get Finished</button>
+  
 
-    <button className='m-2 btn btn-outline-dark' onClick={GetCertainTodos2}>Get Pending</button>
-   
+    <button className='box d' onClick={GetCertainTodos2}>Get Pending</button>
+  
 
-    <button className='m-2 btn btn-outline-dark ' onClick={relodpage} > Relod Page </button>
+    <button className='box e' onClick={relodpage} > Reload Page </button>
+    </div>
       {/* {map} */}
                   <br/>
             <br/>

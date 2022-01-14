@@ -7,17 +7,23 @@ export default function Todo (props) {
 
 
       return (
-    <div className=' card w-25 text-center container container-table '>
-      <div className='Todo card-hearder'>To-Dos
-      </div>
-          <ul className='list-group  list-group-flush '>
-          <li className='Todo list-group-item'> <input className = "me-5 form-check-input"  type="checkbox"  name = "checkbox3"  id="flexCheckIndeterminate" defaultChecked = {isCompleted} onClick={()=>{props.checkAndUpdate1(_id,!isCompleted)}}/>
-          
-         <span  className='ms-4  h5 '   style={{ textDecoration:isCompleted? 'line-through':'none'}}>{title}</span>
-          
-          <button className=' ms-5 btn btn-outline-danger '  onClick={()=>{
+    <div className='To'>
+     
+          <ul className='Ul1'>
+
+          <h2 className='Mar'   style={{ textDecoration:isCompleted? 'line-through':'none'}}>{title} </h2>
+          <div className='ite'>
+            
+          <li className='item1' ><form><p> <input className = "check"  type="checkbox"  name = "checkbox3"   checked = {isCompleted} onClick={()=>{props.checkAndUpdate1(_id,!isCompleted)}}/>
+          <label className='Clo' htmlFor='Clo'  ><span style={{color:'#2E4C6D'}} >Finished </span>: <span style={{color:'#FC997C'}}>Pending</span></label></p></form>
+        
+
+          <div className='container'>
+          <button className='btn'  onClick={()=>{
             props.deleteOneTodo(_id)}}>Delete</button>
+            </div>
             </li> 
+            </div>
   </ul>    
           
       

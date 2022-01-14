@@ -4,8 +4,11 @@
   "description": "",
   "main": "db.js",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "colors": "^1.4.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.2",
     "react": "^17.0.2"
   },

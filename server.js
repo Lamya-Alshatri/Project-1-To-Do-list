@@ -5,7 +5,14 @@ const cors = require("cors");
 const db = require("./db");
 const Todo = require("./todo");
 const usertat = require("./Users");
-const { rawListeners } = require("./todo");
+
+const bcrypt = require('bcrypt')
+
+const jwt = require('jsonwebtoken')
+
+const colors = require('colors/safe')
+
+const secret = require('../Project-1-To-Do-list/secret.json')
 // console.log(Todo);
 
 app.use(express.json());
@@ -141,18 +148,56 @@ app.put("/tasks/:id/:isCompleted", (req, res) => {
   );
 });
 
-app.post("/users/register", (req, res) => {
-  usertat.create(req.body, (err, newUser) => {
-    if (err) {
-      console.log("ERROR: ", err);
-      res.status(400).json({ message: "This email already taken" });
-    } else {
-      // res.status(201).json(newUser);
-      console.log(newUser)
-      res.status(201).json({ message: "Create New User Successfully" });
+app.post("/users/register",  (req, res) => {
+
+usertat.find({email:req.body.email})
+  .exec()
+  .then(users => {
+    if(users.length >= 1 ){
+      return res.status(409).json({
+        message:'email is already taken'
+      })
     }
+    else{
+      bcrypt.hash(req.body.password,10, function (err,hash){
+      if(err){
+        return res.status(500).json({
+          error: err
+        })
+      }else{
+        const user = new usertat ({
+          email:req.body.email,
+          password:hash,
+          username:req.body.username
+        })
+        res.status(201).json({message:'new user created'})
+        user.save()
+        .then(result => console.log('success'))
+        .catch(err => console.log('error'))
+        }
+      })
+    }
+  })
+
+  // Down register without bcrypt
+
+  // usertat.create(req.body, (err, newUser) => {
+
+  //   if (err) {
+  //     console.log("ERROR: ", err);
+  //     res.status(400).json({ message: "This email is already taken" });
+  //   } else {
+  //     // res.status(201).json(newUser);
+  //     // console.log(newUser)
+      
+  //     res.status(201).json({ message: "Create New User Successfully" });
+  //   }
   });
-});
+
+  
+
+
+
 
 // app.post("/users/login", (req, res) => {
 //   usertat.find({ email: req.body.email }, (err, data) => {
@@ -165,7 +210,7 @@ app.post("/users/register", (req, res) => {
 //       console.log(data);
 //       if (data.length === 1) {
 //         console.log("we found the user")
-//         res.status(200).json({ message: "we found the user" });
+//         // res.status(200).json({ message: "we found the user" });
 
 //         if (req.body.password === data[0].password) {
 //           res.status(200).json({
@@ -174,46 +219,85 @@ app.post("/users/register", (req, res) => {
 //           console.log("the password is correct");
 //         } else {
 //           console.log("the password is incorrect");
-//           res.status(400).json({message:"the password is incorrect"});
+//           res.status(400).json({message:"the password is incorrect",});
 //         }
-//         res.status(201).json({ message: "This user is vlidated" });
+//         // res.status(201).json({ message: "This user is vlidated", });
 //         // res.json(data[0].username);
        
 //       } else {
 //         console.log("we didn't find the user")
-//         res.status(404).json({ message: "we didn't find the user" });
+//         res.status(404).json({ message: "we didn't find the user", });
 //       }
 //     }
 //   });
 // });
 
 app.post("/users/login", (req, res) => {
-  usertat.find({ email: req.body.email }, (err, arrUserFound) => {
-    if (err) {
-      console.log("ERROR: ", err);
-    } else {
-      // console.log(arrUserFound);
-      if (arrUserFound.length === 1) {
-        // we found the user
-        if (req.body.password === arrUserFound[0].password) {
-          // password correct
-          res.status(200).json({
-            message: "Login Successfully",
-            username: arrUserFound[0].username,
-          });
-        } else {
-          // password incorrect
-          res.status(400).json({
-            message: "Wrong password",
-          });
-        }
-      } else {
-        res.status(404).json({
-          message: "The email entered is not registered",
-        });
-      }
+
+  usertat.find({ email: req.body.email })
+  .exec()
+  .then(users => {
+    if(users.length < 1){
+      return res.status(404).json({
+        message:"Authorization failed"
+      }); 
     }
-  });
+    bcrypt.compare(req.body.password, users[0].password, (err,Equals) =>{
+      if (err) return res.sendStatus(401)
+      if(Equals){
+
+        const token = jwt.sign({
+          email:users[0].email,
+          password:users[0].password,
+          username:users[0].username
+        },
+        secret.key,{
+          expiresIn:"1h"
+        })
+        return res.status(200).json({
+          message:'Authorization Successful',
+          token:token,
+          username:users[0].username
+        })
+        // create a token
+      }
+      res.sendStatus(401);
+    })
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({
+      error:err
+    })
+  })
+
+// login without bcrypt
+
+  // usertat.find({ email: req.body.email }, (err, arrUserFound) => {
+  //   if (err) {
+  //     console.log("ERROR: ", err);
+  //   } else {
+  //     // console.log(arrUserFound);
+  //     if (arrUserFound.length === 1) {
+  //       // we found the user
+  //       if (req.body.password === arrUserFound[0].password) {
+  //         // password correct
+  //         res.status(200).json({
+  //           message: "Login Successfully",
+  //           username: arrUserFound[0].username,
+  //         });
+  //       } else {
+  //         // password incorrect
+  //         res.status(400).json({
+  //           message: "Wrong password",
+  //         });
+  //       }
+  //     } else {
+  //       res.status(404).json({
+  //         message: "The email entered is not registered",
+  //       });
+  //     }
+  //   }
+  // });
 });
 
 
@@ -234,5 +318,5 @@ app.post("/users/login", (req, res) => {
 
 
 app.listen(5000, () => {
-  console.log("SERVER IS WORKING ..");
+  console.log(colors.cyan.bold("SERVER IS WORKING "));
 });

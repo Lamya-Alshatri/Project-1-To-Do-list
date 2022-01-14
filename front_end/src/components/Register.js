@@ -1,14 +1,14 @@
 import React,{useState} from 'react'
 import axios from "axios"
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Register() {
 
-    const [email, setEmail] = useState("lamya")
+    const [email, setEmail] = useState("")
 
-    const [password, setPassword] = useState("90")
+    const [password, setPassword] = useState("")
     
-    const [username, setuserName] = useState("l")
+    const [username, setuserName] = useState("")
     
 
     const registerFunc = (e) => {
@@ -32,52 +32,49 @@ export default function Register() {
         });
     };
     return (
-        <div className="Register m-5  d-flex justify-content-center " >
+        <div className="" >
 
 
-<div className="card w-50">
-  <div className="card-body">
-    <h5 className="card-title">Register</h5>
-  
-  <div className="input-group mb-3">
-  <span class=" m-5 input-group-text" id="basic-addon1">Name</span>
-            <input className='m-5 form-control' type='text' onChange={(e)=>{
+    <div className='Register' style={{backgroundColor:'#FC997C'}}>
+    <h4 className=""> Register</h4>
+    </div>
+    <div className="Register" style={{backgroundColor:'white', marginBottom:'50px'}} >
+      <br/>
+
+  <span className=" " >Name </span>
+            <input className='' type='text' onChange={(e)=>{
         setuserName(e.target.value)
             }} placeholder='write your name here'/>
-            </div>
+           
             <br/>
-            <hr className="my-4"/>
             <br/>
-            <div className="input-group mb-3">
-            <input className=' m-5 form-control'  type='password'  onChange={(e)=>{
+           
+            <span className=" ">password </span>
+            <input className=''  type='password'  onChange={(e)=>{
         setPassword(e.target.value)
         
             }} placeholder='write your password here' />
-            <span class=" m-5 input-group-text" id="basic-addon1">password</span>
-            </div>
-            
+      
             <br/>
-            <hr className="my-4"/>
             <br/>
-            <div className="input-group mb-3">
-            <span class=" m-5 input-group-text" id="basic-addon1">Email</span>
-            <input className='m-5 form-control' type='email'  onChange={(e)=>{
+            <span className=" ">Email </span>
+            <input className='' type='email'  onChange={(e)=>{
         setEmail(e.target.value)}} placeholder='write your email here' />
-              </div>
+        
 
 
 <br/>
 <br/>
-<input type="submit" className='m-2 btn btn-outline-dark' value="register"onClick={registerFunc}/>
+<input type="submit" className='btn' value="register"onClick={registerFunc}/>
 <br/>
 <br/>
-<Link className='btn btn-primary' to="/login">Have An Account</Link>
+<Link style={{textDecoration:"none"}} className='link' to="/login">Do you have an account</Link>
 <br/>
 <br/>
 
-<footer class="blockquote-footer">Login link<cite title="Source Title"></cite></footer>
-   
-  </div>
+
+<br/>
+  
 </div>
           
 
