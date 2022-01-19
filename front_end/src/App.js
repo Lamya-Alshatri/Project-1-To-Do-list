@@ -8,13 +8,8 @@ import Add from"./components/Add"
 import Register from"./components/Register"
 import Login from "./components/Login"
 import { Routes, Route, Link } from "react-router-dom";
-import { FaBeer } from 'react-icons/fa';
-import { VscAzure } from "react-icons/vsc";
-class Question extends React.Component {
-  render() {
-    return <h3> Lets go for a<FaBeer />? </h3>
-  }
-}
+
+
 
 
 export default function App() {
@@ -156,6 +151,7 @@ const [IsLoggedIn, setIsLoggedIn] = useState();
 
 const [username, setusername] = useState("");
 
+const [Registered, setRegistered] = useState();
 
 const logout = () =>{
 
@@ -195,8 +191,6 @@ const logout = () =>{
 <h1 className='list1'>To-Do list</h1>
 <br/>
 
-    
-    
 
       <Routes>
         <Route path="/home" element={<div className="home">
@@ -228,7 +222,7 @@ const logout = () =>{
       <br/>
       </div>}/>
         <Route path="login" element={< Login setIsLoggedIn={setIsLoggedIn} setusername={setusername} />} />
-        <Route path="register" element={< Register/>} />
+        <Route path="register" element={< Register setRegistered={setRegistered}  />} />
       </Routes>
 
     </div>

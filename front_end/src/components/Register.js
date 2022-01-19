@@ -2,14 +2,19 @@ import React,{useState} from 'react'
 import axios from "axios"
 import { Link } from "react-router-dom";
 
-export default function Register() {
+export default function Register(props) {
 
     const [email, setEmail] = useState("")
 
     const [password, setPassword] = useState("")
     
     const [username, setuserName] = useState("")
-    
+
+    const [Mossage, setMossage] = useState('');
+
+    const [Status, setStatus] = useState(null);
+
+
 
     const registerFunc = (e) => {
         e.preventDefault();
@@ -26,9 +31,15 @@ export default function Register() {
         .post(`http://localhost:5000/users/register`, newUser)
         .then((response) => {
           console.log("DATA: ", response.data);
+          setMossage(response.data.message)
+          setStatus(response.status)
+          props.setRegistered(true)
         })
         .catch((err) => {
           console.log("ERR: ", err);
+          setMossage(err.response.data.message)
+          setStatus(err.response.status)
+          props.setRegistered(false)
         });
     };
     return (
@@ -62,8 +73,17 @@ export default function Register() {
         setEmail(e.target.value)}} placeholder='write your email here' />
         
 
-
 <br/>
+<br/>
+        {(Status === 201) && ( <div className="Success" >
+            {Mossage}
+</div>
+)}
+
+{(Status === 409 ||Status === 500) && ( <div className="Error" >
+            {Mossage}
+</div>
+)}
 <br/>
 <input type="submit" className='btn' value="register"onClick={registerFunc}/>
 <br/>

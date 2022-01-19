@@ -84,18 +84,21 @@ export default function Login(props) {
   </div>
   <div className="Register" style={{backgroundColor:'white'}}>
     <br/>
-  <span className=" ">Password </span>
-  <input type="text" className=" " placeholder="Lam86486" type='password' onChange={(e)=>{
-        setPassword(e.target.value)}}  value = {password} placeholder='Lam86486' />
 
-<br/>
-
-<br/>
-<div className=" ">
-<span className =" ">Email </span>
+    <span className =" ">Email </span>
 <input type="email" className=" " placeholder="lam.alshatri.1@gmail.com"  onChange={(e)=>{
         setEmail(e.target.value)}}  value = {email} placeholder='lam.alshatri.1@gmail.com' />
   
+
+
+
+<br/>
+
+<br/>
+<div className="">
+<span className=" ">Password </span>
+  <input type="text" className=" " placeholder="Lam86486" type='password' onChange={(e)=>{
+        setPassword(e.target.value)}}  value = {password} placeholder='Lam86486' />
 <br/>    
             <br/>
 

@@ -129,6 +129,13 @@ app.put("/tasks/:id", (req, res) => {
   );
 });
 
+app.get('/path',(req,res) =>{
+usertat.find({},(err,data) =>{
+  res.json(data)
+})
+
+})
+
 app.put("/tasks/:id/:isCompleted", (req, res) => {
   console.log("124:", req.params);
   Todo.updateOne(
@@ -150,30 +157,29 @@ app.put("/tasks/:id/:isCompleted", (req, res) => {
 
 app.post("/users/register",  (req, res) => {
 
-usertat.find({email:req.body.email})
+usertat.find({email:req.body.email,password:req.body.password})
   .exec()
   .then(users => {
     if(users.length >= 1 ){
-      return res.status(409).json({
-        message:'email is already taken'
-      })
+      return res.status(409).json({message:'This user information has been used'})
     }
     else{
       bcrypt.hash(req.body.password,10, function (err,hash){
       if(err){
         return res.status(500).json({
-          error: err
+          error: err,
+          message:'Server error'
         })
       }else{
         const user = new usertat ({
           email:req.body.email,
           password:hash,
-          username:req.body.username
+          username:req.body.username,
         })
-        res.status(201).json({message:'new user created'})
+        
         user.save()
-        .then(result => console.log('success'))
-        .catch(err => console.log('error'))
+        .then(result => res.status(201).json({message:'Registered successfully'}))
+        .catch(err => res.status(409).json({message:'Registeration failed'}))
         }
       })
     }
@@ -261,7 +267,9 @@ app.post("/users/login", (req, res) => {
         })
         // create a token
       }
-      res.sendStatus(401);
+      res.status(404).json({
+        message:"Authorization failed"
+      }); 
     })
   }).catch(err => {
     console.log(err);

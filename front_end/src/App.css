@@ -414,7 +414,7 @@ border-bottom: 2px solid #2E4C6D;
 }
 
 .a {
-    grid-column: col / span 1;
+    grid-column:  span 1;
     grid-row: row ;
 
     box-shadow: inset 0 0 0 0 #f9e506;
@@ -428,7 +428,7 @@ transition: ease-out 0.3s;
 }
 
   .b {
-    grid-column: col 2/ span 2 ;
+    grid-column: col 2/ span 3 ;
     grid-row: row ;
 
     box-shadow: inset 0 0 0 0 #f9e506;
@@ -442,8 +442,9 @@ transition: ease-out 0.3s;
 
 }
 
+
   .c {
-    grid-column: col ;
+    grid-column: col 1/ span 2 ;
     grid-row: row 2 ;
     box-shadow: inset 0 0 0 0 #f9e506;
 
@@ -454,7 +455,7 @@ transition: ease-out 0.3s;
         box-shadow: inset 500px 0 0 0 #f9e506 ;
   }
   .d {
-    grid-column: col 2 / span 2 ;
+    grid-column: col 3 / span 2 ;
     grid-row: row 2 ;
 
     box-shadow: inset 0 0 0 0 #f9e506;
@@ -469,7 +470,7 @@ transition: ease-out 0.3s;
   }
 
   .e {
-    grid-column: col / span 3;
+    grid-column:  span 4;
     grid-row: row 3;
     box-shadow: inset 0 0 0 0 #f9e506;
 
@@ -501,9 +502,9 @@ justify-content: center;
 @media   (max-width: 500px){
 
     .btn{
-
+        
         width: 60px;
-        font-size: 15px;
+        font-size: 14px;
         height: 30px;
     margin-left: 15px;
     }
@@ -543,13 +544,14 @@ width:300px;
 position: relative;
 bottom:0px;
 height: 10;
-width:170px;
+width:150px;
 }
     
   .button{
 position: relative;
 top:0.5px;
-width:auto;
+width:150px;
+font-size: 15px;
 height: 39.5px;
   }
 
@@ -563,4 +565,22 @@ height: 39.5px;
     width:350px;
   }
 
+.box{
+
+font-size: 15px;
+
+}
+
+
+
+.Mar{
+
+font-size: 18px ;
+
+}
+
+.DELETE{
+
+    margin:20px;
+}
 }
