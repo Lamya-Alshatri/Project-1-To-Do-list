@@ -13,6 +13,8 @@ const jwt = require('jsonwebtoken')
 const colors = require('colors/safe')
 
 const secret = require('../Project-1-To-Do-list/secret.json')
+
+const path = require('path')
 // console.log(Todo);
 
 app.use(express.json());
@@ -324,6 +326,14 @@ app.post("/users/login", (req, res) => {
 //   });
 // });
 
+
+if(process.env.NODE_ENV === 'production')
+
+app.use(express.static('client/build'));
+
+app.get('*',(req,res) =>{
+ res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+})
 
 app.listen(5000, () => {
   console.log(colors.cyan.bold("SERVER IS WORKING "));

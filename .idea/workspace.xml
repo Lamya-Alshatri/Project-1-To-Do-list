@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32176f8d-7591-4be0-a177-523c9f5d78bb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Todo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/Users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/components/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/components/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/components/Todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/components/Todo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front_end/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-    </list>
+    <list default="true" id="32176f8d-7591-4be0-a177-523c9f5d78bb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +29,7 @@
       <option name="presentableId" value="Default" />
       <updated>1642301666876</updated>
       <workItem from="1642301669762" duration="17000" />
+      <workItem from="1643121280592" duration="56000" />
     </task>
     <servers />
   </component>

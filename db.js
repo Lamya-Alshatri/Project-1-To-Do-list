@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const dbURI = "mongodb://localhost:27017/TodoList";
+const dbURI = "mongodb+srv://MyTask:lam@cluster0.o40bu.mongodb.net/Users?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI);
 
