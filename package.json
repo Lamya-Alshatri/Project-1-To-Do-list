@@ -7,6 +7,7 @@
     "bcrypt": "^5.0.1",
     "colors": "^1.4.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.2",
@@ -16,7 +17,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "server": "nodemon server.js",
+    "frontend": "npm run start --prefix front_end",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
@@ -27,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/Lamya-Alshatri/Project-1-To-Do-list/issues"
   },
-  "homepage": "https://github.com/Lamya-Alshatri/Project-1-To-Do-list#readme"
+  "homepage": "https://github.com/Lamya-Alshatri/Project-1-To-Do-list#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.1"
+  }
 }

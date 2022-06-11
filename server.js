@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const dotenv = require('dotenv').config()
+
 
 const db = require("./db");
 const Todo = require("./todo");
@@ -327,14 +329,24 @@ app.post("/users/login", (req, res) => {
 // });
 
 
-if(process.env.NODE_ENV === 'production')
 
-app.use(express.static('client/build'));
+
+app.use(express.static('./front_end/build'));
+
+app.use(express.static(
+   path.join(__dirname,"./front_end/build")));
 
 app.get('*',(req,res) =>{
- res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+ res.sendFile(path.resolve(__dirname,'front_end','build','index.html'))
 })
 
-app.listen(5000, () => {
-  console.log(colors.cyan.bold("SERVER IS WORKING "));
+let port = process.env.PORT;
+   if (port == null || port == "") {
+   port = 9000;
+}
+app.listen(port, () => {
+
+  console.log(colors.cyan.bold(`SERVER IS WORKING ${port}`));
 });
+
+
