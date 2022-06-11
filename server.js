@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt')
 
 const jwt = require('jsonwebtoken')
 
-const colors = require('colors/safe')
+// const colors = require('colors/safe')
 
 const secret = require('../Project-1-To-Do-list/secret.json')
 
@@ -342,11 +342,12 @@ app.get('*',(req,res) =>{
 
 let port = process.env.PORT;
    if (port == null || port == "") {
-   port = 9000;
+   port = 3000;
 }
 app.listen(port, () => {
 
-  console.log(colors.cyan.bold(`SERVER IS WORKING ${port}`));
+  console.log((`SERVER IS WORKING ${port}`));
+
 });
 
 
