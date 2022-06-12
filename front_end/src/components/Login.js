@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import axios from "axios"
-import { Routes, Route, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 
 export default function Login(props) {
@@ -11,7 +11,7 @@ export default function Login(props) {
 
     const [password, setPassword] = useState("")
 
-    const [WrongUser, setWrongUser] = useState(false);
+    // const [WrongUser, setWrongUser] = useState(false);
 
     const [LoginStatus, setLoginStatus] = useState(null);
 
@@ -24,7 +24,7 @@ export default function Login(props) {
 
         e.preventDefault();
 
-        console.log("log")
+ 
 
         const UserInfo = {
         email,
@@ -40,12 +40,12 @@ export default function Login(props) {
 
             setMessage(response.data.message)
 
-          console.log("DATA: ", response.data);
+        
           props.setIsLoggedIn(true)
           props.setusername(response.data.username)
         })
         .catch((err) => {
-          console.log("ERR: ", err);
+  
 
           props.setIsLoggedIn(false)
 
@@ -87,7 +87,7 @@ export default function Login(props) {
 
     <span className =" ">Email </span>
 <input type="email" className=" " placeholder="lam.alshatri.1@gmail.com"  onChange={(e)=>{
-        setEmail(e.target.value)}}  value = {email} placeholder='lam.alshatri.1@gmail.com' />
+        setEmail(e.target.value)}}  value = {email}  />
   
 
 
@@ -97,8 +97,8 @@ export default function Login(props) {
 <br/>
 <div className="">
 <span className=" ">Password </span>
-  <input type="text" className=" " placeholder="Lam86486" type='password' onChange={(e)=>{
-        setPassword(e.target.value)}}  value = {password} placeholder='Lam86486' />
+  <input  className=" " placeholder="Lam86486" type='password' onChange={(e)=>{
+        setPassword(e.target.value)}}  value = {password}  />
 <br/>    
             <br/>
 
@@ -122,12 +122,6 @@ export default function Login(props) {
 <br/>
   </div>
 </div>
-            
-          
-        
-
-
-
         </div>
     )
 }

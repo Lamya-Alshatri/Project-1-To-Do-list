@@ -18,7 +18,7 @@ export default function Register(props) {
 
     const registerFunc = (e) => {
         e.preventDefault();
-        console.log("reg");
+ 
         const newUser = {
           // ES6
           email,
@@ -30,13 +30,13 @@ export default function Register(props) {
         axios
         .post(`http://localhost:5000/users/register`, newUser)
         .then((response) => {
-          console.log("DATA: ", response.data);
+         
           setMossage(response.data.message)
           setStatus(response.status)
           props.setRegistered(true)
         })
         .catch((err) => {
-          console.log("ERR: ", err);
+         
           setMossage(err.response.data.message)
           setStatus(err.response.status)
           props.setRegistered(false)

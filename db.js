@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const dbURI = "mongodb+srv://LamyaDatabase:la@cluster0.o40bu.mongodb.net/?retryWrites=true&w=majority";
+const dbURI = process.env.DBURL
 
 mongoose.connect(dbURI);
 

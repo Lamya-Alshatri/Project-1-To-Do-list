@@ -18,8 +18,12 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "frontend": "npm run start --prefix front_end",
+    "heroku-postbuild": "cd front_end && npm install --only=dev && npm install && npm run build",
     "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
+  "engines": {
+    "node": "16.15.1"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lamya-Alshatri/Project-1-To-Do-list.git"

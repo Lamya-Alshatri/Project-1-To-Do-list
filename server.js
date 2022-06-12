@@ -14,7 +14,7 @@ const jwt = require('jsonwebtoken')
 
 // const colors = require('colors/safe')
 
-const secret = require('../Project-1-To-Do-list/secret.json')
+const secret = process.env.SECRET
 
 const path = require('path')
 // console.log(Todo);
@@ -261,7 +261,7 @@ app.post("/users/login", (req, res) => {
           password:users[0].password,
           username:users[0].username
         },
-        secret.key,{
+        {secret}.key,{
           expiresIn:"1h"
         })
         return res.status(200).json({
@@ -331,18 +331,18 @@ app.post("/users/login", (req, res) => {
 
 
 
-app.use(express.static('./front_end/build'));
+
 
 app.use(express.static(
    path.join(__dirname,"./front_end/build")));
 
 app.get('*',(req,res) =>{
- res.sendFile(path.resolve(__dirname,'front_end','build','index.html'))
+ res.sendFile(path.join(__dirname,'front_end','build','index.html'))
 })
 
 let port = process.env.PORT;
    if (port == null || port == "") {
-   port = 3000;
+   port = 5000;
 }
 app.listen(port, () => {
 

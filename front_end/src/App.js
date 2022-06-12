@@ -22,7 +22,7 @@ export default function App() {
     setTasks(res.data)
   })
   .catch(err => {
-    console.error(err); 
+
   })
 
 
@@ -39,13 +39,13 @@ export default function App() {
     axios.post("http://localhost:5000/tasks",body)
     .then(res => {
       
-      console.log(res.data)
+     
       // setTasks(res.data)
-      GetData()
+      GetData();
       // change state using spread operator
     })
     .catch(err => {
-      console.error(err); 
+
     })
     }
 
@@ -53,11 +53,11 @@ export default function App() {
   axios.delete(`http://localhost:5000/tasks/${id}`,)
   .then(res => {
     
-    console.log(res.data)
-    GetData()
+
+    GetData();
   })
   .catch(err => {
-    console.error(err); 
+
   })
 }
 
@@ -65,11 +65,11 @@ const deleteAll = () => {
   axios.delete(`http://localhost:5000/Alltasks`,)
   .then(res => {
     
-    console.log(res.data)
-    GetData()
+  
+    GetData();
   })
   .catch(err => {
-    console.error(err); 
+
   })
 }
 
@@ -77,12 +77,12 @@ const GetCertainTodos = ()=> {
 
 axios.get(`http://localhost:5000/filter?isCompleted=true`)
 .then(function (response) {
-  console.log(response.data)
+ 
   setTasks(response.data)
 
 })
 .catch(function (error) {
-  console.error(error)
+ 
 })
 
 }
@@ -91,12 +91,12 @@ const GetCertainTodos2 = ()=> {
 
   axios.get(`http://localhost:5000/filter?isCompleted=false`)
   .then(function (response) {
-    console.log(response.data)
+
     setTasks(response.data)
   
   })
   .catch(function (error) {
-    console.error(error)
+  
   })
   
   }
@@ -105,12 +105,12 @@ const  checkAndUpdate = (id,newStatus)=>{
 
   axios.put(`http://localhost:5000/tasks/${id}/${newStatus}`,)
   .then(function (response) {
-    console.log(response.data)
+    
 
     GetData()
   })
   .catch(function (error) {
-    console.error(error)
+  
   
   })
 }
