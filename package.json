@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "heroku-postbuild": "cd front_end && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front_end && npm run build --prefix front_end"
   },
   "engines": {
     "node": "16.15.1",
