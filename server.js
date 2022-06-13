@@ -5,7 +5,7 @@ const dotenv = require('dotenv').config()
 
 
 const db = require("./db");
-const Todo = require("./todo");
+const Todo = require("./Todo");
 const usertat = require("./Users");
 
 const bcrypt = require('bcrypt')
