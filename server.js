@@ -339,7 +339,7 @@ app.get("*", (req, res) => {
 });
 
 
-let port = process.env.PORT || 5000;
+let port = process.env.PORT 
 app.listen(port, () => {
   console.log((`SERVER IS WORKING ${port}`));
 
