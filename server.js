@@ -340,10 +340,7 @@ app.get('*',(req,res) =>{
  res.sendFile(path.join(__dirname,'front_end','build','index.html'))
 })
 
-let port = process.env.PORT;
-   if (port == null || port == "") {
-   port = 5000;
-}
+let port = process.env.PORT || 5000;
 app.listen(port, () => {
 
   console.log((`SERVER IS WORKING ${port}`));
