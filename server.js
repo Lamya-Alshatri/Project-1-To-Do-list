@@ -333,17 +333,14 @@ app.post("/users/login", (req, res) => {
 
 
 
-if (process.env.NODE_ENV === "production"){
-app.use(express.static((__dirname,"/front_end/build")));
 
-app.get('*',(req,res) =>{
- res.sendFile(path.resolve(__dirname,'front_end','build','index.html'))
-})
-}else{
-  app.get("/", (req, res) => {
-    res.json("GET / is Working");
-  });
-}
+
+app.use(express.static(path.join(__dirname, "front_end", "build")))
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "front_end", "build", "index.html"));
+});
+
 
 let port = process.env.PORT || 5000;
 app.listen(port, () => {
