@@ -340,8 +340,8 @@ app.get("*", (req, res) => {
 
 
 const port = process.env.MY_PORT || process.env.PORT || 5000;
-const server_host = '0.0.0.0' || ;
-app.listen(port,server_host, () => {
+
+app.listen(port, () => {
   console.log((`SERVER IS WORKING ${port}`));
 
 });
