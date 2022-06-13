@@ -28,7 +28,7 @@ export default function Register(props) {
         };
     
         axios
-        .post(`http://localhost:5000/users/register`, newUser)
+        .post(`https://to-do-listo.herokuapp.com/users/register`, newUser)
         .then((response) => {
          
           setMossage(response.data.message)

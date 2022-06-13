@@ -16,7 +16,7 @@ export default function App() {
   
 
   const GetData = () => {
-  axios.get("http://localhost:5000/tasks")
+  axios.get("https://to-do-listo.herokuapp.com/tasks")
   .then(res => {
     console.log(res.data)
     setTasks(res.data)
@@ -36,7 +36,7 @@ export default function App() {
   //   GetData()
   // },[])
   const postaNewTodo = (body) => {
-    axios.post("http://localhost:5000/tasks",body)
+    axios.post("https://to-do-listo.herokuapp.com/tasks",body)
     .then(res => {
       
      
@@ -50,7 +50,7 @@ export default function App() {
     }
 
     const deleteTodo = (id) => {
-  axios.delete(`http://localhost:5000/tasks/${id}`,)
+  axios.delete(`https://to-do-listo.herokuapp.com/tasks/${id}`,)
   .then(res => {
     
 
@@ -62,7 +62,7 @@ export default function App() {
 }
 
 const deleteAll = () => {
-  axios.delete(`http://localhost:5000/Alltasks`,)
+  axios.delete(`https://to-do-listo.herokuapp.com/Alltasks`,)
   .then(res => {
     
   
@@ -75,7 +75,7 @@ const deleteAll = () => {
 
 const GetCertainTodos = ()=> {
 
-axios.get(`http://localhost:5000/filter?isCompleted=true`)
+axios.get(`https://to-do-listo.herokuapp.com/filter?isCompleted=true`)
 .then(function (response) {
  
   setTasks(response.data)
@@ -89,7 +89,7 @@ axios.get(`http://localhost:5000/filter?isCompleted=true`)
 
 const GetCertainTodos2 = ()=> {
 
-  axios.get(`http://localhost:5000/filter?isCompleted=false`)
+  axios.get(`https://to-do-listo.herokuapp.com/filter?isCompleted=false`)
   .then(function (response) {
 
     setTasks(response.data)
@@ -103,7 +103,7 @@ const GetCertainTodos2 = ()=> {
 
 const  checkAndUpdate = (id,newStatus)=>{
 
-  axios.put(`http://localhost:5000/tasks/${id}/${newStatus}`,)
+  axios.put(`https://to-do-listo.herokuapp.com/tasks/${id}/${newStatus}`,)
   .then(function (response) {
     
 
