@@ -17,9 +17,9 @@
     "start": "node server.js",
     "heroku-postbuild": "cd front_end && npm install --only=dev && npm install && npm run build"
   },
-  "proxy": "http://localhost:5000",
   "engines": {
-    "node": "16.15.1"
+    "node": "16.15.1", 
+    "npm":"8.11.0"
 },
   "repository": {
     "type": "git",
