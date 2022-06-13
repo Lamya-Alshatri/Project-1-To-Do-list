@@ -22,7 +22,7 @@
     "eject": "react-scripts eject"
   },
   
-  "proxy": "http://localhost:5000",
+  "proxy": "https://to-do-listo.herokuapp.com",
   "eslintConfig": {
     "extends": [
       "react-app",
