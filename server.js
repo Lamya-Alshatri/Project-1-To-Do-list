@@ -22,9 +22,6 @@ const path = require('path')
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.json("GET / is Working");
-});
 
 // CRUD: Create, Read, Update, Delete
 
