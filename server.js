@@ -261,7 +261,7 @@ app.post("/users/login", (req, res) => {
           password:users[0].password,
           username:users[0].username
         },
-        {secret}.key,{
+        secret,{
           expiresIn:"1h"
         })
         return res.status(200).json({

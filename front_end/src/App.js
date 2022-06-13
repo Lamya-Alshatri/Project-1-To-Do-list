@@ -1,7 +1,7 @@
 
 import './App.css';
 
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import Todo from "./components/Todo"
 import axios from 'axios';
 import Add from"./components/Add"
