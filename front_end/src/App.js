@@ -18,7 +18,7 @@ export default function App() {
   const GetData = () => {
   axios.get("https://to-do-listo.herokuapp.com/tasks")
   .then(res => {
-    console.log(res.data)
+    
     setTasks(res.data)
   })
   .catch(err => {
