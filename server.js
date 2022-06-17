@@ -48,7 +48,7 @@ app.get("/filter", (req, res) => {
   });
 });
 /*
-the up endpoint is replace to these two
+the up endpoint is replace to these two get certain isCompleted conditions
 app.get("/completed", (req, res) => {
   Todo.find({ isCompleted: true }, (err, data) => {
     if (err) {
@@ -112,30 +112,29 @@ app.delete("/Alltasks", (req, res) => {
   });
 });
 
-app.put("/tasks/:id", (req, res) => {
-  // console.log("37:", req.params.id);
-  Todo.updateOne(
-    { _id: req.params.id },
-    { title: req.body.newTitle },
-    (err, updateObj) => {
-      if (err) {
-        // console.log("ERROR: ", err);
-        res.status(400).json(err);
-      } else {
-        console.log(updateObj);
-        updateObj.modifiedCount === 1
-          ? res.json("Update one todo successfully")
-          : res.status(404).json("This todo is not found");
-      }
-    }
-  );
-});
+// app.put("/tasks/:id", (req, res) => {
+//   // console.log("37:", req.params.id);
+//   Todo.updateOne(
+//     { _id: req.params.id },
+//     { title: req.body.title },
+//     (err, updateObj) => {
+//       if (err) {
+//         // console.log("ERROR: ", err);
+//         res.status(400).json(err);
+//       } else {
+//         console.log(updateObj);
+//         updateObj.modifiedCount === 1
+//           ? res.json("Update one todo successfully")
+//           : res.status(404).json("This todo is not found");
+//       }
+//     }
+//   );
+// });
 
 app.get('/path',(req,res) =>{
 usertat.find({},(err,data) =>{
   res.json(data)
 })
-
 })
 
 app.put("/tasks/:id/:isCompleted", (req, res) => {

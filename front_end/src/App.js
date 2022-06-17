@@ -8,7 +8,7 @@ import Add from"./components/Add"
 import Register from"./components/Register"
 import Login from "./components/Login"
 import { Routes, Route, Link } from "react-router-dom";
-
+import {GetTodos} from "./Actions/TodoActions"
 
 export default function App() {
   const [tasks, setTasks] = useState([])
@@ -18,7 +18,7 @@ export default function App() {
   const GetData = () => {
   axios.get("http://localhost:5000/tasks")
   .then(res => {
-    console.log(res.data)
+ 
     setTasks(res.data)
   })
   .catch(err => {
