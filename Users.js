@@ -14,11 +14,11 @@ const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     username: String,
-    // Todos:[todoSchema]
+     Todos:[{type: Schema.Types.ObjectId, ref: 'Todo' }]
   });
 
   
 
-const usertat = model("Users Schema",userSchema)
+const usertat = model("UsersSchema",userSchema)
 
 module.exports = usertat;

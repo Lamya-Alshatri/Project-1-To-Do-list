@@ -13,12 +13,13 @@ import { Routes, Route, Link } from "react-router-dom";
 export default function App() {
   const [tasks, setTasks] = useState([])
 
-  
+  const endpoint = process.env.REACT_APP_ENDPOINT
 
+ 
   const GetData = () => {
-  axios.get("https://to-do-listo.herokuapp.com/tasks")
+  axios.get(`${endpoint}/tasks`)
   .then(res => {
-    
+ 
     setTasks(res.data)
   })
   .catch(err => {
@@ -36,7 +37,7 @@ export default function App() {
   //   GetData()
   // },[])
   const postaNewTodo = (body) => {
-    axios.post("https://to-do-listo.herokuapp.com/tasks",body)
+    axios.post(`${endpoint}/tasks`,body)
     .then(res => {
       
      
@@ -50,7 +51,7 @@ export default function App() {
     }
 
     const deleteTodo = (id) => {
-  axios.delete(`https://to-do-listo.herokuapp.com/tasks/${id}`,)
+  axios.delete(`${endpoint}/tasks/${id}`,)
   .then(res => {
     
 
@@ -62,7 +63,7 @@ export default function App() {
 }
 
 const deleteAll = () => {
-  axios.delete(`https://to-do-listo.herokuapp.com/Alltasks`,)
+  axios.delete(`${endpoint}/Alltasks`,)
   .then(res => {
     
   
@@ -75,7 +76,7 @@ const deleteAll = () => {
 
 const GetCertainTodos = ()=> {
 
-axios.get(`https://to-do-listo.herokuapp.com/filter?isCompleted=true`)
+axios.get(`${endpoint}/filter?isCompleted=true`)
 .then(function (response) {
  
   setTasks(response.data)
@@ -89,7 +90,7 @@ axios.get(`https://to-do-listo.herokuapp.com/filter?isCompleted=true`)
 
 const GetCertainTodos2 = ()=> {
 
-  axios.get(`https://to-do-listo.herokuapp.com/filter?isCompleted=false`)
+  axios.get(`${endpoint}/filter?isCompleted=false`)
   .then(function (response) {
 
     setTasks(response.data)
@@ -103,7 +104,7 @@ const GetCertainTodos2 = ()=> {
 
 const  checkAndUpdate = (id,newStatus)=>{
 
-  axios.put(`https://to-do-listo.herokuapp.com/tasks/${id}/${newStatus}`,)
+  axios.put(`${endpoint}/tasks/${id}/${newStatus}`,)
   .then(function (response) {
     
 
