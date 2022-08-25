@@ -73,7 +73,6 @@ app.get("/not_completed", (req, res) => {
 
 app.post("/tasks", (req, res) => {
   // console.log('25:',req.body);
-
   Todo.create(req.body, (err, newTask) => {
     if (err) {
       console.log("ERROR: ", err);
@@ -82,6 +81,29 @@ app.post("/tasks", (req, res) => {
     }
   });
 });
+
+app.post("/tasks/:id", (req, res) => {
+
+  usertat.findById(req.params.id, (err, theUser) => {
+    if (err) {
+         console.log("ERROR: ", err);
+        } else {
+          theUser.Todos.push({
+            title:req.body.title,
+            isCompleted:req.body.isCompleted
+          })
+        }
+  })
+  // console.log('25:',req.body);
+  // Todo.create(req.body, (err, newTask) => {
+  //   if (err) {
+  //     console.log("ERROR: ", err);
+  //   } else {
+  //     res.status(201).json(newTask);
+  //   }
+  // });
+});
+
 
 app.delete("/tasks/:id", (req, res) => {
   // console.log("37:", req.params.id);

@@ -8,15 +8,16 @@ import Add from"./components/Add"
 import Register from"./components/Register"
 import Login from "./components/Login"
 import { Routes, Route, Link } from "react-router-dom";
-import {GetTodos} from "./Actions/TodoActions"
+
 
 export default function App() {
   const [tasks, setTasks] = useState([])
 
-  
+  const endpoint = process.env.REACT_APP_ENDPOINT
 
+ 
   const GetData = () => {
-  axios.get("http://localhost:5000/tasks")
+  axios.get(`${endpoint}/tasks`)
   .then(res => {
  
     setTasks(res.data)
@@ -36,7 +37,7 @@ export default function App() {
   //   GetData()
   // },[])
   const postaNewTodo = (body) => {
-    axios.post("http://localhost:5000/tasks",body)
+    axios.post(`${endpoint}/tasks`,body)
     .then(res => {
       
      
@@ -50,7 +51,7 @@ export default function App() {
     }
 
     const deleteTodo = (id) => {
-  axios.delete(`http://localhost:5000/tasks/${id}`,)
+  axios.delete(`${endpoint}/tasks/${id}`,)
   .then(res => {
     
 
@@ -62,7 +63,7 @@ export default function App() {
 }
 
 const deleteAll = () => {
-  axios.delete(`http://localhost:5000/Alltasks`,)
+  axios.delete(`${endpoint}/Alltasks`,)
   .then(res => {
     
   
@@ -75,7 +76,7 @@ const deleteAll = () => {
 
 const GetCertainTodos = ()=> {
 
-axios.get(`http://localhost:5000/filter?isCompleted=true`)
+axios.get(`${endpoint}/filter?isCompleted=true`)
 .then(function (response) {
  
   setTasks(response.data)
@@ -89,7 +90,7 @@ axios.get(`http://localhost:5000/filter?isCompleted=true`)
 
 const GetCertainTodos2 = ()=> {
 
-  axios.get(`http://localhost:5000/filter?isCompleted=false`)
+  axios.get(`${endpoint}/filter?isCompleted=false`)
   .then(function (response) {
 
     setTasks(response.data)
@@ -103,7 +104,7 @@ const GetCertainTodos2 = ()=> {
 
 const  checkAndUpdate = (id,newStatus)=>{
 
-  axios.put(`http://localhost:5000/tasks/${id}/${newStatus}`,)
+  axios.put(`${endpoint}/tasks/${id}/${newStatus}`,)
   .then(function (response) {
     
 

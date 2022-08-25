@@ -13,7 +13,8 @@ export default function Register(props) {
     const [Mossage, setMossage] = useState('');
 
     const [Status, setStatus] = useState(null);
-
+    
+    const endpoint = process.env.REACT_APP_ENDPOINT
 
 
     const registerFunc = (e) => {
@@ -28,7 +29,7 @@ export default function Register(props) {
         };
     
         axios
-        .post(`http://localhost:5000/users/register`, newUser)
+        .post(`${endpoint}/users/register`, newUser)
         .then((response) => {
          
           setMossage(response.data.message)

@@ -18,7 +18,7 @@ export default function Login(props) {
     const [message, setMessage] = useState("");
 
     // 200 400 404
-    
+    const endpoint = process.env.REACT_APP_ENDPOINT
 
     const loginFunc = (e) => {
 
@@ -33,7 +33,7 @@ export default function Login(props) {
 
         
         axios
-        .post(`http://localhost:5000/users/login`,UserInfo)
+        .post(`${endpoint}/users/login`,UserInfo)
         .then((response) => {
 
             setLoginStatus(response.status)
@@ -65,7 +65,7 @@ export default function Login(props) {
 
 
        
-    //     axios.delete(`http://localhost:5000/users/login/${email}`)
+    //     axios.delete(`${endpoint}/users/login/${email}`)
     //     .then(res => {
     //     console.log(res)
     //     })
